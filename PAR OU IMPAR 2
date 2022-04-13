@@ -1,0 +1,27 @@
+from random import randint
+total_vitorias = 0
+resultado = None
+while True:
+    jogada_maquina = randint(0, 10)
+    jogada_jogador = int(input('Digite um número inteiro de 0 a 10: '))
+    total = jogada_maquina + jogada_jogador
+    escolha_jogador = input('Você quer par ou impar? ').lower().strip()[0]
+    if escolha_jogador not in 'pií':
+        print('Escolha inválida. Tente novamente')
+    else:
+        if escolha_jogador in 'p' and total % 2 == 0:
+            print(f'A máquina jogou {jogada_maquina}, você jogou {jogada_jogador}, deu par! VOCE VENCEU!')
+            total_vitorias = total_vitorias + 1
+            print('Vamos jogar novamente...')
+        elif escolha_jogador in 'ií' and total % 2 != 0:
+            print(f'A máquina jogou {jogada_maquina}, você jogou {jogada_jogador}, deu ímpar! VOCE VENCEU!')
+            print('Vamos jogar novamente...')
+        else:
+            if total % 2 == 0:
+                resultado = 'par'
+            else:
+                resultado = 'impar'
+            print(f'A máquina jogou {jogada_maquina}, você jogou {jogada_jogador}, deu {resultado}! VOCE PERDEU!')
+            break
+print(f'Seu total de vitórias foi {total_vitorias}!')
+print('Jogo finalizado. Volte sempre! ')
